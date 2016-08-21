@@ -766,8 +766,9 @@ def what_version_is_this(env):
 def get_latest_miab_version():
 	# This pings https://mailinabox.email/setup.sh and extracts the tag named in
 	# the script to determine the current product version.
-	import urllib.request
-	return re.search(b'TAG=(.*)', urllib.request.urlopen("https://mailinabox.email/setup.sh?ping=1").read()).group(1).decode("utf8")
+	#import urllib.request
+	return "v0.19b-fork"
+	#return re.search(b'TAG=(.*)', urllib.request.urlopen("https://mailinabox.email/setup.sh?ping=1").read()).group(1).decode("utf8")
 
 def check_miab_version(env, output):
 	config = load_settings(env)
@@ -785,7 +786,7 @@ def check_miab_version(env, output):
 		if this_ver == latest_ver:
 			output.print_ok("Mail-in-a-Box is up to date. You are running version %s." % this_ver)
 		else:
-			output.print_error("A new version of Mail-in-a-Box is available. You are running version %s. The latest version is %s. For upgrade instructions, see https://mailinabox.email. "
+			output.print_error("A new version of Mail-in-a-Box is available. You are running version %s. The latest version is %s. For upgrade instructions, see https://github.com/itslukej/mailinabox. "
 				% (this_ver, latest_ver))
 
 def run_and_output_changes(env, pool):
